@@ -1,6 +1,9 @@
 package org.wikipedia.tests.mobile;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,6 +17,8 @@ import org.wikipedia.pages.mobile.components.PageToolbar;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Android")
+@Feature("Страница поиска")
 @Tag("android")
 public class SearchPageTests extends TestBase {
     private final String searchText = "Java";
@@ -21,6 +26,7 @@ public class SearchPageTests extends TestBase {
     @Test
     @DisplayName("Отображение в заголовке первого элемента списка предлагаемых результатов указанного значения " +
             "после заполнения поля \"Поиск по Википедии\"")
+    @Owner("Сергей Зубенко")
     public void verifyFirstSuggestElementTitle() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();
@@ -34,6 +40,7 @@ public class SearchPageTests extends TestBase {
 
     @Test
     @DisplayName("Возврат на страницу поиска после нажатия на кнопку \"Перейти вверх\" на странице статьи")
+    @Owner("Сергей Зубенко")
     public void returnToSearchPageFromArticlePageAfterClickOnGoUpBtn() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();
@@ -58,6 +65,7 @@ public class SearchPageTests extends TestBase {
 
     @Test
     @DisplayName("Возврат на страницу поиска после нажатия на системную кнопку устройства \"Назад\" на странице статьи")
+    @Owner("Сергей Зубенко")
     public void returnToSearchPageFromArticlePageAfterClickOnBackBtn() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();

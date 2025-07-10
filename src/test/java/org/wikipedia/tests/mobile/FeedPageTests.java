@@ -1,5 +1,8 @@
 package org.wikipedia.tests.mobile;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -10,11 +13,14 @@ import org.wikipedia.pages.mobile.components.NavigationBar;
 import static com.codeborne.selenide.Condition.selected;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Android")
+@Feature("Главная страница")
 @Tag("android")
 public class FeedPageTests extends TestBase {
 
     @Test
     @DisplayName("Переход на страницу \"Лента\" после нажатия на кнопку \"Пропустить\" на странице онбординга")
+    @Owner("Сергей Зубенко")
     public void successfulOpenFeedPageAfterSkipOnboarding() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();

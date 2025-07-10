@@ -1,5 +1,8 @@
 package org.wikipedia.tests.web;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,6 +17,8 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("Web")
+@Feature("Главная страница портала")
 @Tag("web")
 public class MainPageTests extends TestBase {
     MainPage mainPage = new MainPage();
@@ -22,6 +27,7 @@ public class MainPageTests extends TestBase {
     @Test
     @DisplayName("Отображение заголовка страницы = \"Википедия — свободная энциклопедия\" при открытии главной " +
             "страницы портала")
+    @Owner("Сергей Зубенко")
     public void displayPageTitleAfterOpenPage() {
         mainPage.openPage(Project.config.baseUrl());
         assertEquals("Википедия — свободная энциклопедия", title());
@@ -30,6 +36,7 @@ public class MainPageTests extends TestBase {
 
     @Test
     @DisplayName("Отображение поля \"Искать в Википедии\" в навигационной панели после открытия главной страницы")
+    @Owner("Сергей Зубенко")
     public void displaySearchFieldInNavigationPanel() {
         mainPage.openPage(Project.config.baseUrl())
                 .verifySearchField("Искать в Википедии");
@@ -39,6 +46,7 @@ public class MainPageTests extends TestBase {
     @ParameterizedTest(name = "Отображение значения = \"{0}\" в предложенных результатах после заполнения поля " +
             "\"Искать в Википедии\"")
     @CsvFileSource(resources = "/testData/searchData.csv")
+    @Owner("Сергей Зубенко")
     public void verifySuggestionsResults(String searchValue) {
         mainPage.openPage(Project.config.baseUrl())
                 .fillSearchField(searchValue);
@@ -53,6 +61,7 @@ public class MainPageTests extends TestBase {
     @Test
     @DisplayName("Отсутствие предложенных результатов после заполнения поля \"Искать в Википедии\" " +
             "несуществующим значением")
+    @Owner("Сергей Зубенко")
     public void verifySuggestionResultsListIsEmpty() {
         mainPage.openPage(Project.config.baseUrl())
                 .fillSearchField("lkgF^%46t");

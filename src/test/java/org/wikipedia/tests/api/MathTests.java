@@ -1,5 +1,8 @@
 package org.wikipedia.tests.api;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,6 +22,8 @@ import static org.wikipedia.api.specs.FormulaSpec.formulaResponseSpec;
 import static org.wikipedia.api.specs.RenderSpec.renderRequestSpec;
 import static org.wikipedia.api.specs.RenderSpec.renderResponseSpec;
 
+@Epic("Api")
+@Feature("Math - formula rendering")
 @Tag("api")
 public class MathTests {
     AdditionalMethods additionalMethods = new AdditionalMethods();
@@ -26,6 +31,7 @@ public class MathTests {
     @Test
     @DisplayName("Валидация переданной TeX формулы и получение ее нормализованного значения через api с " +
             "помощью метода /media/math/check/{type}")
+    @Owner("Сергей Зубенко")
     public void checkTexFormulaAndGetNormalizeValue() {
         CheckRequestModel requestModel = new CheckRequestModel();
 
@@ -57,6 +63,7 @@ public class MathTests {
     @Test
     @DisplayName("Получение ранее сохраненной формулы по переданному значению hash через api с " +
             "помощью метода /media/math/formula/{hash}")
+    @Owner("Сергей Зубенко")
     public void getPreviouslyStoredFormula() {
         CheckRequestModel requestModel = new CheckRequestModel();
 
@@ -90,6 +97,7 @@ public class MathTests {
     @Test
     @DisplayName("Получение отрисованной формулы по переданному значению hash через api с " +
             "помощью метода /media/math/render/{format}/{hash}")
+    @Owner("Сергей Зубенко")
     public void getRenderedFormulaInTheGivenFormat() {
         CheckRequestModel requestModel = new CheckRequestModel();
 

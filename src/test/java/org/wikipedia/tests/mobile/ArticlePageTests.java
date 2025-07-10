@@ -1,5 +1,8 @@
 package org.wikipedia.tests.mobile;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,12 +17,15 @@ import org.wikipedia.pages.mobile.components.SnackBar;
 import static com.codeborne.selenide.Condition.*;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Android")
+@Feature("Страница статьи")
 @Tag("android")
 public class ArticlePageTests extends TestBase {
     private final String searchText = "Java";
 
     @Test
     @DisplayName("Добавление статьи в избранное после нажатия на кнопку \"Сохранить\" на странице статьи")
+    @Owner("Сергей Зубенко")
     public void addArticleToFavorites() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();

@@ -1,6 +1,9 @@
 package org.wikipedia.tests.mobile;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -12,12 +15,15 @@ import static com.codeborne.selenide.CollectionCondition.empty;
 import static com.codeborne.selenide.Condition.*;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Android")
+@Feature("Страница избранного")
 @Tag("android")
 public class FavoritesListPageTests extends TestBase {
 
     @Test
     @DisplayName("Удаление статьи из избранного после нажатия на кнопку = \"Удалить выбранные элементы\" " +
             "в панели действий на странице списка \"Сохраненное\"")
+    @Owner("Сергей Зубенко")
     public void deleteArticleFromFavorites() {
         OnboardingPage onboardingPage = new OnboardingPage();
         FeedPage feedPage = new FeedPage();
