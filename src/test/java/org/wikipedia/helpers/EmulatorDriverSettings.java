@@ -29,11 +29,11 @@ public class EmulatorDriverSettings implements WebDriverProvider {
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
                 .setPlatformVersion(config.platformVersion())
-                .setDeviceName(config.deviceName())
-                .setApp(getAppPath())
-                .setAppPackage(config.appPackage())
-                .setAppActivity(config.appActivity());
+                .setDeviceName(config.deviceName());
         if (config.environment().equals("jenkins")) options.setApp(config.appPath());
+        else options.setApp(getAppPath());
+        options.setAppPackage(config.appPackage())
+                .setAppActivity(config.appActivity());
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
