@@ -32,4 +32,7 @@ public interface EmulatorConfig extends Config {
 
     @Key("appActivity")
     String appActivity();
+
+    @Key("environment")
+    String environment();
 }

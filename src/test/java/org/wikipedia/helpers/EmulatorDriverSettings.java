@@ -33,6 +33,7 @@ public class EmulatorDriverSettings implements WebDriverProvider {
                 .setApp(getAppPath())
                 .setAppPackage(config.appPackage())
                 .setAppActivity(config.appActivity());
+        if (config.environment().equals("jenkins")) options.setApp(config.appPath());
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
