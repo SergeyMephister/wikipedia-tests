@@ -83,6 +83,25 @@ task web(type: Test) {
     }
 }
 
+task webAndApi(type: Test) {
+    useJUnitPlatform{
+        includeTags("web", "api")
+    }
+
+    if (System.getProperty("threads") != null) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'                 : true,
+                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': Integer.parseInt(System
+                        .getProperty("threads").toString()),
+                'junit.jupiter.execution.parallel.config.fixed.max-pool-size': Integer.parseInt(System
+                        .getProperty("threads").toString())
+        ]
+    }
+}
+
 task api(type: Test) {
     useJUnitPlatform{
         includeTags("api")
